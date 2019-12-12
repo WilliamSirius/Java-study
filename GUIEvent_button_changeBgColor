@@ -9,28 +9,40 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+
 public class Event_button_changeBgColor extends JFrame
 {
 	private JPanel ButtonPanel;
 	private static final int DEFAULT_WIDTH=300;
-	private static final int DEFAULT_HEIGHT=20;
+	private static final int DEFAULT_HEIGHT=200;
 	
 	public Event_button_changeBgColor()
 	{
 		this.setSize(DEFAULT_WIDTH,DEFAULT_HEIGHT);
-		JButton jb1=new JButton("Yellow");
-		JButton jb2=new JButton("Blue");
+        ButtonPanel=new JPanel();
 		
-		ButtonPanel=new JPanel();
-		ButtonPanel.add(jb1);
-		ButtonPanel.add(jb2);
+		JButton blueButton=new JButton("BLUE");
+		JButton yellowButton=new JButton("YELLOW");
+		JButton redButton=new JButton("RED");
+		JButton pinkButton=new JButton("PINK");
+		JButton orangeButton=new JButton("ORANGE");
+		JButton greenButton=new JButton("GREEN");
+		
+		ButtonPanel.add(blueButton);
+		ButtonPanel.add(yellowButton);
+		ButtonPanel.add(redButton);
+		ButtonPanel.add(pinkButton);
+		ButtonPanel.add(orangeButton);
+		ButtonPanel.add(greenButton);
 		
 		add(ButtonPanel);
-		ColorAction yellowAct=new ColorAction(Color.YELLOW);
-		ColorAction blueAct=new ColorAction(Color.BLUE);
 		
-		jb1.addActionListener(yellowAct);
-		jb2.addActionListener(blueAct);
+		blueButton.addActionListener(new ColorAction(Color.BLUE));
+		yellowButton.addActionListener(new ColorAction(Color.YELLOW));
+		redButton.addActionListener(new ColorAction(Color.RED));
+		pinkButton.addActionListener(new ColorAction(Color.PINK));
+		orangeButton.addActionListener(new ColorAction(Color.ORANGE));
+		greenButton.addActionListener(new ColorAction(Color.GREEN));
 	}
 	private class ColorAction implements ActionListener
 	{
@@ -49,8 +61,6 @@ public class Event_button_changeBgColor extends JFrame
 	public static void main(String[]args)
 	{
 		JFrame frame=new Event_button_changeBgColor();
-		frame.setBounds(0,0,500,500);
-		frame.setTitle("TestButton");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
 	}
