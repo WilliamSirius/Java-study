@@ -1,0 +1,75 @@
+package DrawTest;
+
+import java.awt.Color;
+import java.awt.EventQueue;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.geom.Ellipse2D;
+
+import javax.swing.JComponent;
+import javax.swing.JFrame;
+
+public class Ballons 
+{
+	public static void main(String[]args)
+	{
+		EventQueue.invokeLater(()->
+		{
+			JFrame frame=new NewDrawFrame();
+			frame.setBounds(100,100,512,512);
+			frame.setTitle("useDraw");
+			frame.setResizable(true);
+			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			frame.setBackground(Color.BLUE);
+			frame.setVisible(true);
+		});
+	}
+}
+class NewDrawFrame extends JFrame
+{
+	public NewDrawFrame()
+	{
+		add(new NewDrawComponent());
+		pack();
+	}
+}
+class NewDrawComponent extends JComponent
+{
+	private static final int DEFAULT_WIDTH=100;
+	private static final int DEFAULT_HEIGHT=100;
+	public void paintComponent(Graphics g)
+	{
+		Graphics2D g2=(Graphics2D)g;
+		Color[]cr= {Color.RED,Color.BLUE,Color.GREEN,Color.RED.darker().darker().darker(),Color.YELLOW,Color.PINK,Color.ORANGE};
+		for(int i=0;i<500;i++)
+		{
+			Ellipse2D circle=new Ellipse2D.Double();
+			int keyX=(int)(Math.random()*(999-100+1));
+			int keyY=(int)(Math.random()*(999-100+1));
+			int keyR=10;
+			circle.setFrameFromCenter(keyX,keyY,keyX+keyR,keyY+keyR);
+			if(i%2==0)
+			{
+				g2.setColor(Color.black);
+				g2.drawLine(keyX,keyY,keyX,keyY+keyR+5);
+				g2.setPaint(cr[i/100]);
+				g2.draw(circle);
+				g2.fill(circle);
+			}
+			else
+			{
+				g2.setColor(Color.black);
+				g2.drawLine(keyX,keyY,keyX,keyY+keyR+5);
+				g2.setPaint(cr[i/100]);
+				g2.draw(circle);
+				g2.fill(circle);
+			}
+		}
+	}
+	public NewDrawComponent() 
+	{
+		this.setSize(DEFAULT_WIDTH,DEFAULT_HEIGHT);
+		this.setBackground(Color.BLUE);
+	}
+	
+}
