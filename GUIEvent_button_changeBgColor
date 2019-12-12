@@ -49,6 +49,8 @@ public class Event_button_changeBgColor extends JFrame
 	public static void main(String[]args)
 	{
 		JFrame frame=new Event_button_changeBgColor();
+		frame.setBounds(0,0,500,500);
+		frame.setTitle("TestButton");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
 	}
